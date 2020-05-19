@@ -5,7 +5,7 @@
  * 
  * Basado fuertemente en este ejemplo: https://stackoverflow.com/a/12313090
  */
-function enviarEmail($mailto,$message,$subject,$dir,$filename,$from,$name)
+function enviarAdjunto($mailto,$message,$subject,$dir,$filename,$from,$name)
 {
 
     // Obtenemos los archivos en el directorio
