@@ -5,7 +5,7 @@
  * 
  * Basado fuertemente en este ejemplo: https://stackoverflow.com/a/12313090
  */
-function enviarAdjunto($mailto,$message,$subject,$dir,$filename,$from,$name)
+function enviarAdjunto($mailto,$message,$subject,$dir,$from,$name, $uniq)
 {
 
     // Obtenemos los archivos en el directorio
@@ -37,7 +37,8 @@ function enviarAdjunto($mailto,$message,$subject,$dir,$filename,$from,$name)
     foreach ($dirToScan as $file) {
 
         // Chequeamos que lo que estamos adjuntando es un archivo
-        if (is_file($dir.$file)):
+        // Y que coincida con el ID unico asignado por el formulario
+        if (is_file($dir.$file) && preg_match("/$uniq/i",$file)):
             // Obtenemos los datos del archivo, y lo insertamos al contenido
             $content = file_get_contents($dir.$file);
             $content = chunk_split(base64_encode($content));
